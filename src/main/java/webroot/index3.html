@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome VERTx</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    Hi there!!
+
+    <form action="/app/do/search" id="searchForm">
+        <input id="Search" type="text" name="s" placeholder="Search...">
+        <input id="Name" type="text" name="Name" placeholder="Give some name">
+        <input type="submit" value="Search">
+    </form>
+    <!-- the result of the search will be rendered inside this div -->
+    <div id="result">HERE</div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script>
+        // Attach a submit handler to the form
+        $("#searchForm").submit(function (event) {
+
+            // Stop form from submitting normally
+            event.preventDefault();
+
+            // Get some values from elements on the page:
+
+            let dat = {
+                Name: $("#Name").val(),
+                Search: $("#Search").val()
+            };
+
+            // Send the data using post
+            $.ajax({
+                url: $("#searchForm").attr("action"),
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(dat),
+                dataType: 'json'
+            }).done(function (data) {
+                console.log(">>> " + JSON.stringify(data));
+                $("#result").empty().append(JSON.stringify(data));
+            }).fail(function () {
+                alert("error");
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

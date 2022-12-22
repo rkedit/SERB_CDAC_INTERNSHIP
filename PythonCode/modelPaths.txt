@@ -1,0 +1,15 @@
+models/isDefect
+models/type/enhancement
+models/type/behavior
+models/type/compileError
+models/type/resourceUsage
+models/type/security
+models/bugPopularity/MostPopular
+models/bugPopularity/LeastPopularity
+models/bugPopularity/MediumPopularity
+models/osFinal/OpenOs
+models/osFinal/Windows
+models/priority/High
+models/priority/Low
+models/priority/Medium
+models/priority/Insignificant
